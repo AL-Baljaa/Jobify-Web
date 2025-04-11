@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Job Listings | Jobify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="job-listingStyleSheet.css">
+    <link rel="stylesheet" href="homeStylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="jobify.png" alt="Jobify Logo" class="logo">
+        <div class="sign-buttons">
+            <a href="signin.html" class="sign-in">Sign In</a>
+            <a href="signup.html" class="sign-up">Sign Up</a>
+        </div>
+
+    </header>
+    
+    <nav class="navigation">
+        <ul class="navigationList">
+            <li><a href="home.html" ><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="job-listing.html" class="active"><i class="fas fa-search"></i> Job Listing</a></li>
+            <li><a href="job-seeker.html"><i class="fas fa-users"></i> Job Seeker</a></li>
+            <li><a href="employer.html"><i class="fas fa-briefcase "></i> Employer</a></li>
+            <li><a href="trainee.html"><i class="fas fa-project-diagram"></i> Trainee and Undergraduate</a></li>
+            <li><a href="skills.html"><i class="fas fa-chalkboard"></i> Skill Development</a></li>
+
+        </ul>
+    </nav>
+
+    <body>
+        <main class="container">
+            <section class="search">
+                <h2 class="search-title"><i class="fas fa-search"></i> Find Your Dream Job</h2>
+                <form class="search-form">
+                    <div class="forms">
+                        <label for="keywords">Job Title or Keywords</label>
+                        <input type="text" id="keywords" class="form-control" placeholder="e.g. Web Developer">
+                    </div>
+                    <div class="forms">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" class="form-control" placeholder="City or Country">
+                    </div>
+                </br>
+                    <div class="forms">
+                        <label>Salary Range</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox"><input type="checkbox" checked> $50k - $100k</label>
+                            <label class="checkbox"><input type="checkbox" > $100k - $150k</label>
+                            <label class="checkbox"><input type="checkbox"> $150k - $200k</label>
+                        </div>
+                    </div>
+                    <div class="forms">
+                        <label>Job Type</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox"><input type="checkbox" checked> Full-time</label>
+                            <label class="checkbox"><input type="checkbox"> Part-time</label>
+                            <label class="checkbox"><input type="checkbox"> trainee</label>
+                        </div>
+                    </div>
+                    <div class="forms">
+                        <label>Experience Level</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox"><input type="radio" checked> Entry Level</label>
+                            <label class="checkbox"><input type="radio">Mid Level</label>
+                            <label class="checkbox"><input type="radio"> Senior</label>
+                        </div>
+                    </div>
+                    <div class="forms">
+                        <label>Remote Work</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox"><input type="radio" checked> Any</label>
+                            <label class="checkbox"><input type="radio">Remote Only</label>
+                            <label class="checkbox"><input type="radio"> On-site Only</label>
+                        </div>
+                    </div>
+                    <div class="forms">
+                        <label>Posted Within</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox"><input type="radio" checked> Any Time</label>
+                            <label class="checkbox"><input type="radio">Last 24 Hours</label>
+                            <label class="checkbox"><input type="radio">Last Week </label>
+                            <label class="checkbox"><input type="radio">Last Month </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="searchButton">Search Jobs</button>
+                </form>
+            </section>
+
+    
+            <div class="results">
+                <h2>2,200 Jobs Found</h2>
+                <div>
+                    <label for="sort">Sort by:</label>
+                    <select id="sort" class="sort-by">
+                        <option>Most Relevant</option>
+                        <option>Newest</option>
+                        <option>Highest Salary</option>
+                    </select>
+                </div>
+            </div>
+    
+            <table class="jobs-table">
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Salary</th>
+                        <th>Rating</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="job-title">Senior Frontend Developer</div>
+                            <div class="jobs">
+                                <span><i class="fas fa-clock"></i> Full-time</span>
+                                <span><i class="fas fa-calendar-alt"></i> Posted 2d ago</span>
+                            </div>
+                        </td>
+                        <td>TechSolutions Inc.</td>
+                        <td>
+                            <div>New York, NY</div>
+                            <div class="location"><i class="fas fa-map-marker-alt"></i> Hybrid</div>
+                        </td>
+                        <td>$90k - $110k/yr</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="review">1289 reviews</div>
+                        </td>
+                        <td>
+                            <div class="job-actions">
+                                <button class="Apply">Apply</button>
+                                <button class="Save">Save</button>
+                            </div>                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="job-title">Software Engineer</div>
+                            <div class="jobs">
+                                <span><i class="fas fa-clock"></i> Contract</span>
+                                <span><i class="fas fa-calendar-alt"></i> Posted 1w ago</span>
+                            </div>
+                        </td>
+                        <td>Google</td>
+                        <td>
+                            <div>Mountain View, CA</div>
+                            <div class="location"><i class="fas fa-map-marker-alt"></i> Remote</div>
+                        </td>
+                        <td>$100k - $130k/yr</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review">4892 reviews</div>
+                        </td>
+                        <td>
+                            <div class="job-actions">
+                                <button class="Apply">Apply</button>
+                                <button class="Save">Save</button>
+                            </div>                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="job-title">Customer Support Rep</div>
+                            <div class="jobs">
+                                <span><i class="fas fa-clock"></i> Full-time</span>
+                                <span><i class="fas fa-calendar-alt"></i> Posted 3d ago</span>
+                            </div>
+                        </td>
+                        <td>Amazon</td>
+                        <td>
+                            <div>Washington, USA</div>
+                            <div class="location"><i class="fas fa-map-marker-alt"></i> On-site</div>
+                        </td>
+                        <td>$40k - $50k/yr</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="review">2893 reviews</div>
+                        </td>
+                        <td>
+                            <div class="job-actions">
+                                <button class="Apply">Apply</button>
+                                <button class="Save">Save</button>
+                            </div>                                           
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </body>
+    
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footers">
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 Jobify. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

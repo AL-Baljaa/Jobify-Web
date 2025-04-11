@@ -1,0 +1,127 @@
+<html>
+<head>
+    <title>Jobify</title>
+    <link rel="stylesheet" href="homeStylesheet.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px; 
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: url('unlock1.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            color: white;
+            font-size: 1em; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            width: 100vw;
+
+        }
+        
+       
+        nav {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1em; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1em; 
+        }
+        
+        .logo {
+            height: 3em; /
+            max-width: 100%;
+        }
+        
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5em; 
+            font-size: 1em; 
+        }
+        
+        
+        .welcome {
+            text-align: center;
+            padding: 5vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+        
+        h1 {
+            font-size: 5em; 
+            margin-bottom: 1em;
+            line-height: 1.2;
+        }
+        
+        p {
+            font-size: 0.5cm; 
+            margin-bottom: 2em; 
+            max-width: 50em; 
+        }
+        
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .button {
+            background-color: #faf1a5;
+            color: rgb(21, 3, 65);
+            padding: 0.8em 1.8em; 
+            border-radius: 0.3125em; 
+            font-weight: bold;
+            font-size: 1em; 
+
+        }
+        .buttons a:hover {
+            color: #d04409;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="jobify.png" alt="Jobify Logo" class="logo">
+        <a href="home.html">Home</a>
+        <a href="job-listing.html">Job Listing</a>
+        <a href="job-seeker.html">Job Seeker</a>
+        <a href="employer.html">Employer</a>
+        <a href="trainee.html">Trainee</a>
+        <a href="skills.html">Skill Development</a>
+
+    </nav>
+
+    <div class="welcome">
+        <h1>Welcome to Jobify</h1>
+        <p style="color: rgb(21, 3, 65); font-weight: bold; background-color: #faf1a5;">"Here where you unlock your dream job"</p>
+        <p style="font-weight: bold; ">"Jobify" connects job seekers with employers to make job hunting easier and faster.</p>
+        <div class="buttons">
+            <a href="home.html" class="button">Start now</a>
+        </div>
+    </div>
+    <footer>
+        <div class="footers">
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+
+        </div>
+        <p class="copyright">© 2025 Jobify - All rights reserved</p>
+    </footer>
+</body>
+</html>

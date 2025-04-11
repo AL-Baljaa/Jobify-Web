@@ -1,0 +1,190 @@
+<html>
+<head>
+    <title>Employer page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="employer.css">
+    <link rel="stylesheet" href="homeStylesheet.css">
+
+</head>
+<body>
+    <header>
+        <img src="jobify.png" alt="Jobify Logo" class="logo">
+        <div class="sign-buttons">
+            <a href="signin.html" class="sign-in">Sign In</a>
+            <a href="signup.html" class="sign-up">Sign Up</a>
+        </div>
+
+    </header>
+
+        <nav class="navigation">
+            <ul class="navigationList">
+                <li><a href="home.html" ><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="job-listing.html"><i class="fas fa-search"></i> Job Listing</a></li>
+                <li><a href="job-seeker.html"><i class="fas fa-users"></i> Job Seeker</a></li>
+                <li><a href="employer.html" class="active"><i class="fas fa-briefcase "></i> Employer</a></li>
+                <li><a href="trainee.html"><i class="fas fa-project-diagram"></i> Trainee and Undergraduate</a></li>
+                <li><a href="skills.html"><i class="fas fa-chalkboard"></i> Skill Development</a></li>
+    
+            </ul>
+        </nav>  
+
+        <main class="container">
+            <div class="profile">
+                <div class="section">
+                    <h3 class="section-title">Update Your Profile</h3>
+                    <form class="forms">
+                        <div class="form-">
+                            <label for="company-name">🏢 Company Name</label>
+                            <input type="text" id="company-name" name="company-name" placeholder="Enter company name" required>
+                        </div>
+    
+                        <div class="form">
+                            <label for="location">📍 Location</label>
+                            <input type="text" id="location" name="location" placeholder="e.g., Muscat, Dubai">
+                        </div>
+    
+                        <div class="form">
+                            <label for="industry">🏭 Industry</label>
+                            <input type="text" id="industry" name="industry" placeholder="e.g., Tech, Healthcare">
+                        </div>
+    
+                        <div class="form">
+                            <label for="company-description">📝 Company Description</label>
+                            <textarea id="company-description" name="company-description" placeholder="Describe your company..."></textarea>
+                        </div>
+    
+                        <div class="form">
+                            <label for="logo">📄 Upload Company Logo</label>
+                            <input type="file" id="logo" name="logo">
+                        </div>
+    
+                        <button type="submit" class="Apply">💾 Save Profile</button>
+                    </form>
+                </div>
+    
+                <div class="section">
+                    <h3 class="section-title"> Post a Job</h3>
+                    <form class="forms">
+                        <div class="form">
+                            <label for="job-title">💼 Job Title</label>
+                            <input type="text" id="job-title" name="job-title" placeholder="e.g., Software Engineer" required>
+                        </div>
+    
+                        <div class="form-">
+                            <label for="salary">💵 Salary</label>
+                            <input type="text" id="salary" name="salary" placeholder="e.g., $1,000 - $10,000">
+                        </div>
+    
+                        <div class="form">
+                            <label for="job-description">📄 Job Description</label>
+                            <textarea id="job-description" name="job-description" placeholder="Describe the work and the roles..."></textarea>
+                        </div>
+    
+                        <div class="form">
+                            <label for="job-location">📍 Location</label>
+                            <input type="text" id="job-location" name="job-location" placeholder="e.g., Muscat, Dubai, ...">
+                        </div>
+    
+                        <button type="submit" class="Apply">📤 Post Job</button>
+                    </form>
+                </div>
+    
+                <div class="section">
+                    <h3 class="section-title">📋 Posted Jobs</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Company</th>
+                                <th>Location</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Senior Software Engineer</td>
+                                <td>TechVision</td>
+                                <td>San Francisco, CA</td>
+                                <td>Develop high-performance applications and systems. Collaborate with cross-functional teams.</td>
+                                <td><button class="Apply">View Applications</button></td>
+                            </tr>
+                            <tr>
+                                <td>Application Developer</td>
+                                <td>Oman Digital Solutions</td>
+                                <td>Muscat, Oman</td>
+                                <td>Develops and customizes software applications. Works with a variety of technologies to create user-friendly applications and provide software solutions to business needs.</td>
+                                <td><button class="Apply">View Applications</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    
+                <div class="section">
+                    <h3 class="section-title">📝 Manage Applications</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Candidate</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Senior Software Engineer</td>
+                                <td>Sarah Liam</td>
+                                <td><span class="status-reviewed">Under Review</span></td>
+                                <td><button class="Apply">Invite for Interview</button></td>
+                            </tr>
+                            <tr>
+                                <td>Product Manager</td>
+                                <td>Ahmed Ali</td>
+                                <td><span class="status-offer">Offer Received</span></td>
+                                <td><button class="Apply">Contact Candidate</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    
+                <div class="section">
+                    <h3 class="section-title">💬 Communicate with Candidates</h3>
+                    <div class="message-container">
+                        <div class="message">
+                            <p><strong>Sarah Liam:</strong> Looking forward to discussing the role!</p>
+                            <textarea placeholder="Write a message..."></textarea>
+                        </br>
+                    </br>
+                            <button class="Apply">Send Message</button>
+                        </div>
+                        <div class="message">
+                            <p><strong>Ahmed Ali:</strong> Excited about the opportunity!</p>
+                            <textarea placeholder="Write a message..."></textarea>
+                        </br>
+                    </br>
+                            <button class="Apply">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </main>
+    </body>
+           
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footers">
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+                <div class="copyright">
+                    © 2025 Jobify. All rights reserved.
+                </div>
+            </div>
+        </footer>
+</body>
+</html>
+        

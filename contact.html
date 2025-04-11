@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="contactStylesheet.css">
+    <link rel="stylesheet" href="homeStylesheet.css">
+</head>
+<body>
+
+    <header>
+        <img src="jobify.png" alt="Jobify Logo" class="logo">
+        <div class="sign-buttons">
+            <a href="signin.html" class="sign-in">Sign In</a>
+            <a href="signup.html" class="sign-up">Sign Up</a>
+        </div>
+
+    </header>
+    
+    <!-- Navigation Menu -->
+    <nav class="navigation">
+        <ul class="navigationList">
+            <li><a href="home.html" ><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="job-listing.html"><i class="fas fa-search"></i> Job Listing</a></li>
+            <li><a href="job-seeker.html"><i class="fas fa-users"></i> Job Seeker</a></li>
+            <li><a href="employer.html"><i class="fas fa-briefcase "></i> Employer</a></li>
+            <li><a href="trainee.html"><i class="fas fa-project-diagram"></i> Trainee and Undergraduate</a></li>
+            <li><a href="skills.html"><i class="fas fa-chalkboard"></i> Skill Development</a></li>
+
+        </ul>
+    </nav>
+
+<main class="container">
+    <div class="profile-main">
+
+        <div class="profile-card">
+            <h3 class="section-title"> Contact Us</h3>
+            <form action="https://httpbin.org/get" method="get" class="profile-form">
+                <div class="form-group">
+                    <label for="name"> Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"> Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message"> Your Message</label>
+                    <textarea id="message" name="message" placeholder="Type your message here..." rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">📤 Send Message</button>
+            </form>
+        </div>
+
+        <div class="profile-card">
+            <h3 class="section-title"> Frequently Asked Questions</h3>
+            <ul>
+                <li><strong>How do I apply for a job?</strong> — Go to Job Listings and click Apply.</li>
+                <li><strong>Can I update my profile?</strong> — Yes, anytime through your dashboard.</li>
+                <li><strong>Where can I upload my CV?</strong> — On your profile page after signing in.</li>
+            </ul>
+        </div>
+
+        <div class="profile-card">
+            <h3 class="section-title"> Contact Information</h3>
+            <p><strong>Email:</strong> support@jobify.com</p>
+            <p><strong>Phone:</strong> +968 9123 4567</p>
+            <p><strong>Follow us:</strong></p>
+            <p>
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a> |
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a> |
+                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footers">
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 Jobify. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

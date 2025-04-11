@@ -1,0 +1,131 @@
+<html>
+<head>
+    <title>Job Seeker page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="jobSeekerStyleSheet.css">
+    <link rel="stylesheet" href="homeStylesheet.css">
+
+</head>
+<body>
+    <header>
+        <img src="jobify.png" alt="Jobify Logo" class="logo">
+        <div class="sign-buttons">
+            <a href="signin.html" class="sign-in">Sign In</a>
+            <a href="signup.html" class="sign-up">Sign Up</a>
+        </div>
+
+    </header>
+
+        <nav class="navigation">
+            <ul class="navigationList">
+                <li><a href="home.html" ><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="job-listing.html"><i class="fas fa-search"></i> Job Listing</a></li>
+                <li><a href="job-seeker.html"class="active"><i class="fas fa-users"></i> Job Seeker</a></li>
+                <li><a href="employer.html"><i class="fas fa-briefcase "></i> Employer</a></li>
+                <li><a href="trainee.html"><i class="fas fa-project-diagram"></i> Trainee and Undergraduate</a></li>
+                <li><a href="skills.html"><i class="fas fa-chalkboard"></i> Skill Development</a></li>
+    
+            </ul>
+        </nav>  
+           
+        <body>
+            <main class="container">
+        
+                    <div class="profile">
+                        <div class="section">
+                            <h3 class="section-title">Update Your Profile</h3>
+                            <form class="profile-form">
+                                <div class="forms">
+                                    <label for="name">👤 Full Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                                </div>
+        
+                                <div class="forms">
+                                    <label for="title">💼 Job Title</label>
+                                    <input type="text" id="title" name="title" placeholder="e.g., Software Engineer">
+                                </div>
+        
+                                <div class="forms">
+                                    <label for="skills">🧠 Skills</label>
+                                    <input type="text" id="skills" name="skills" placeholder="e.g., Web Development, Research">
+                                </div>
+        
+                                <div class="forms">
+                                    <label for="about">📝 About You</label>
+                                    <textarea id="about" name="about" placeholder="Write a short bio..."></textarea>
+                                </div>
+        
+                                <div class="form">
+                                    <label for="cv">📄 Upload Your CV</label>
+                                    <input type="file" id="cv" name="cv">
+                                </div>
+        
+                                <button type="submit" class="Apply">💾 Save Profile</button>
+                            </form>
+                        </div>
+        
+                        <div class="section">
+                            <h3 class="section-title">📌 Saved Jobs</h3>
+                            <table class="table">
+                                    <tr>
+                                        <th>Job Title</th>
+                                        <th>Company</th>
+                                        <th>Location</th>
+                                        <th>descreption</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Software Engineer</td>
+                                        <td>Emirates Tech Innovations</td>
+                                        <td> Dubai, UAE</td>
+                                        <td>Designs and develops enterprise-level software applications. Works with cloud technologies and collaborates with product managers and designers to deliver high-performance solutions.</td>
+                                        <td><button class="Apply">Apply</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Full Stack Developer</td>
+                                        <td>Oman Digital Solutions</td>
+                                        <td>Muscat, Oman</td>
+                                        <td>Develops secure and scalable server-side systems using Node.js and Python. Optimizes databases and supports integration with third-party services.</td>
+                                        <td><button class="Apply">Apply</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+        
+                        <div class="section">
+                            <h3 class="section-title">📋 Application Status</h3>
+                            <div >
+                                <p>Lead UX Designer - <span class="job-status status-reviewed">Under Review</span></p>
+                            </br>
+                                <p>Software Engineer - <span class="job-status status-offer">Offer Received</span></p>
+                            </div>
+                        </div>
+        
+                        <div class="section">
+                            <h3 class="section-title">💡 Recommended For You</h3>
+                            <p> Systems Engineer <span class="recommended">95% Match</span></p>
+                            <p>Location: Dubai,UAE | $120,000 - $140,000</p>
+                        </br>
+                        <button class="Apply">Apply</button>
+                    </div>
+                    </div>
+                </div>
+            </main>
+        </body>
+            
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footers">
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 Jobify. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
