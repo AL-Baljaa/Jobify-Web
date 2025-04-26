@@ -1,190 +1,372 @@
 <html>
 <head>
-    <title>Employer page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="employer.css">
-    <link rel="stylesheet" href="homeStylesheet.css">
-
+  <title>Employer page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <header>
-        <img src="jobify.png" alt="Jobify Logo" class="logo">
-        <div class="sign-buttons">
-            <a href="signin.html" class="sign-in">Sign In</a>
-            <a href="signup.html" class="sign-up">Sign Up</a>
+
+<body class="bg-light">
+  <header class="bg-primary text-white p-3 sticky-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <img src="jobify.png" alt="Jobify Logo" class="img-fluid" style="height: 2.5em;">
+      <div>
+        <a href="signin.html" class="btn btn-outline-light me-2">Sign In</a>
+        <a href="signup.html" class="btn btn-warning">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="home.html"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="job-listing.html"><i class="fas fa-search"></i> Job Listing</a></li>
+          <li class="nav-item"><a class="nav-link" href="job-seeker.html"><i class="fas fa-users"></i> Job Seeker</a></li>
+          <li class="nav-item"><a class="nav-link active" href="employer.html"><i class="fas fa-briefcase"></i> Employer</a></li>
+          <li class="nav-item"><a class="nav-link" href="trainee.html"><i class="fas fa-project-diagram"></i> Trainee and Undergraduate</a></li>
+          <li class="nav-item"><a class="nav-link" href="skills.html"><i class="fas fa-chalkboard"></i> Skill Development</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+
+    <!-- Employer Profile Section -->
+    <div class="card mb-4 rounded">
+      <div class="card-body">
+        <h3 class="section-title">Update Your Profile</h3>
+        <form id="employerProfileForm" class="forms">
+          <div class="mb-3">
+            <label for="company-name">🏢 Company Name</label>
+            <input type="text" class="form-control" id="company-name" placeholder="Enter company name" required>
+          </div>
+          <div class="mb-3">
+            <label for="location">📍 Location</label>
+            <input type="text" class="form-control" id="location" placeholder="e.g., Muscat, Dubai">
+          </div>
+          <div class="mb-3">
+            <label for="industry">🏭 Industry</label>
+            <input type="text" class="form-control" id="industry" placeholder="e.g., Tech, Healthcare">
+          </div>
+          <div class="mb-3">
+            <label for="company-description">📝 Company Description</label>
+            <textarea class="form-control" id="company-description" placeholder="Describe your company..."></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="logo">📄 Upload Company Logo</label>
+            <input class="form-control" type="file" id="logo">
+          </div>
+          <button type="submit" class="btn btn-primary">💾 Save Profile</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Post a Job Section -->
+    <div class="card mb-4 rounded">
+      <div class="card-body">
+        <h3 class="section-title">Post a Job</h3>
+        <form id="postJobForm" class="forms">
+          <div class="mb-3">
+            <label for="job-title">💼 Job Title</label>
+            <input type="text" class="form-control" id="job-title" placeholder="e.g., Software Engineer" required>
+          </div>
+          <div class="mb-3">
+            <label for="salary">💵 Salary</label>
+            <input type="text" class="form-control" id="salary" placeholder="e.g., $1,000 - $10,000">
+          </div>
+          <div class="mb-3">
+            <label for="job-description">📄 Job Description</label>
+            <textarea class="form-control" id="job-description" placeholder="Describe the work and the roles..."></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="job-location">📍 Location</label>
+            <input type="text" class="form-control" id="job-location" placeholder="e.g., Muscat, Dubai, ...">
+          </div>
+          <button type="submit" class="btn btn-primary">📤 Post Job</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Posted Jobs Section -->
+    <div class="card mb-4 rounded">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="section-title">📋 Posted Jobs</h3>
+          <div class="col-md-4">
+            <input type="text" class="form-control" id="searchJobs" placeholder="Search jobs...">
+          </div>
         </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="postedJobsBody">
+              <!-- Will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-    </header>
+    <!-- Manage Applications Section -->
+    <div class="card mb-4 rounded">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="section-title">📝 Manage Applications</h3>
+          <div class="col-md-4">
+            <input type="text" class="form-control" id="searchApplications" placeholder="Search applications...">
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Job Title</th>
+                <th>Candidate</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="applicationsBody">
+              <!-- Will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-        <nav class="navigation">
-            <ul class="navigationList">
-                <li><a href="home.html" ><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="job-listing.html"><i class="fas fa-search"></i> Job Listing</a></li>
-                <li><a href="job-seeker.html"><i class="fas fa-users"></i> Job Seeker</a></li>
-                <li><a href="employer.html" class="active"><i class="fas fa-briefcase "></i> Employer</a></li>
-                <li><a href="trainee.html"><i class="fas fa-project-diagram"></i> Trainee and Undergraduate</a></li>
-                <li><a href="skills.html"><i class="fas fa-chalkboard"></i> Skill Development</a></li>
-    
-            </ul>
-        </nav>  
+    <!-- Communicate with Candidates Section -->
+    <div class="card mb-4 rounded">
+      <div class="card-body">
+        <h3 class="section-title">💬 Communicate with Candidates</h3>
+        <div id="candidateMessages">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </main>
 
-        <main class="container">
-            <div class="profile">
-                <div class="section">
-                    <h3 class="section-title">Update Your Profile</h3>
-                    <form class="forms">
-                        <div class="form-">
-                            <label for="company-name">🏢 Company Name</label>
-                            <input type="text" id="company-name" name="company-name" placeholder="Enter company name" required>
-                        </div>
-    
-                        <div class="form">
-                            <label for="location">📍 Location</label>
-                            <input type="text" id="location" name="location" placeholder="e.g., Muscat, Dubai">
-                        </div>
-    
-                        <div class="form">
-                            <label for="industry">🏭 Industry</label>
-                            <input type="text" id="industry" name="industry" placeholder="e.g., Tech, Healthcare">
-                        </div>
-    
-                        <div class="form">
-                            <label for="company-description">📝 Company Description</label>
-                            <textarea id="company-description" name="company-description" placeholder="Describe your company..."></textarea>
-                        </div>
-    
-                        <div class="form">
-                            <label for="logo">📄 Upload Company Logo</label>
-                            <input type="file" id="logo" name="logo">
-                        </div>
-    
-                        <button type="submit" class="Apply">💾 Save Profile</button>
-                    </form>
-                </div>
-    
-                <div class="section">
-                    <h3 class="section-title"> Post a Job</h3>
-                    <form class="forms">
-                        <div class="form">
-                            <label for="job-title">💼 Job Title</label>
-                            <input type="text" id="job-title" name="job-title" placeholder="e.g., Software Engineer" required>
-                        </div>
-    
-                        <div class="form-">
-                            <label for="salary">💵 Salary</label>
-                            <input type="text" id="salary" name="salary" placeholder="e.g., $1,000 - $10,000">
-                        </div>
-    
-                        <div class="form">
-                            <label for="job-description">📄 Job Description</label>
-                            <textarea id="job-description" name="job-description" placeholder="Describe the work and the roles..."></textarea>
-                        </div>
-    
-                        <div class="form">
-                            <label for="job-location">📍 Location</label>
-                            <input type="text" id="job-location" name="job-location" placeholder="e.g., Muscat, Dubai, ...">
-                        </div>
-    
-                        <button type="submit" class="Apply">📤 Post Job</button>
-                    </form>
-                </div>
-    
-                <div class="section">
-                    <h3 class="section-title">📋 Posted Jobs</h3>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Job Title</th>
-                                <th>Company</th>
-                                <th>Location</th>
-                                <th>Description</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Senior Software Engineer</td>
-                                <td>TechVision</td>
-                                <td>San Francisco, CA</td>
-                                <td>Develop high-performance applications and systems. Collaborate with cross-functional teams.</td>
-                                <td><button class="Apply">View Applications</button></td>
-                            </tr>
-                            <tr>
-                                <td>Application Developer</td>
-                                <td>Oman Digital Solutions</td>
-                                <td>Muscat, Oman</td>
-                                <td>Develops and customizes software applications. Works with a variety of technologies to create user-friendly applications and provide software solutions to business needs.</td>
-                                <td><button class="Apply">View Applications</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-    
-                <div class="section">
-                    <h3 class="section-title">📝 Manage Applications</h3>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Job Title</th>
-                                <th>Candidate</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Senior Software Engineer</td>
-                                <td>Sarah Liam</td>
-                                <td><span class="status-reviewed">Under Review</span></td>
-                                <td><button class="Apply">Invite for Interview</button></td>
-                            </tr>
-                            <tr>
-                                <td>Product Manager</td>
-                                <td>Ahmed Ali</td>
-                                <td><span class="status-offer">Offer Received</span></td>
-                                <td><button class="Apply">Contact Candidate</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-    
-                <div class="section">
-                    <h3 class="section-title">💬 Communicate with Candidates</h3>
-                    <div class="message-container">
-                        <div class="message">
-                            <p><strong>Sarah Liam:</strong> Looking forward to discussing the role!</p>
-                            <textarea placeholder="Write a message..."></textarea>
-                        </br>
-                    </br>
-                            <button class="Apply">Send Message</button>
-                        </div>
-                        <div class="message">
-                            <p><strong>Ahmed Ali:</strong> Excited about the opportunity!</p>
-                            <textarea placeholder="Write a message..."></textarea>
-                        </br>
-                    </br>
-                            <button class="Apply">Send Message</button>
-                        </div>
-                    </div>
-                </div>
-    
-            </div>
-        </main>
-    </body>
-           
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footers">
-                        <a href="about.html">About Us</a>
-                        <a href="contact.html">Contact Us</a>
-                    </div>
-                </div>
-                <div class="copyright">
-                    © 2025 Jobify. All rights reserved.
-                </div>
-            </div>
-        </footer>
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-3 mt-4">
+    <div class="container">
+      <div class="d-flex justify-content-center mb-2">
+        <a href="about.html" class="text-white mx-3 text-decoration-none">About Us</a>
+        <a href="contact.html" class="text-white mx-3 text-decoration-none">Contact Us</a>
+      </div>
+      <div class="text-center">
+        © 2025 Jobify. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // 1. Object Constructors
+    function EmployerProfile(companyName, location, industry, description) {
+      this.companyName = companyName;
+      this.location = location;
+      this.industry = industry;
+      this.description = description;
+    }
+
+    function JobApplication(jobTitle, candidateName, status, lastContact) {
+      this.jobTitle = jobTitle;
+      this.candidateName = candidateName;
+      this.status = status;
+      this.lastContact = lastContact || new Date().toLocaleDateString();
+    }
+
+    // 2. Arrays Initialization
+    let postedJobs = [
+      {
+        title: "Senior Software Engineer",
+        company: "TechVision",
+        location: "San Francisco, CA",
+        description: "Develop high-performance applications and systems. Collaborate with cross-functional teams.",
+        salary: "$120,000 - $150,000"
+      },
+      {
+        title: "Application Developer",
+        company: "Oman Digital Solutions",
+        location: "Muscat, Oman",
+        description: "Develops and customizes software applications. Works with a variety of technologies to create user-friendly applications.",
+        salary: "OMR 1,200 - OMR 1,800"
+      }
+    ];
+
+    let jobApplications = [
+      new JobApplication("Senior Software Engineer", "Sarah Liam", "Under Review"),
+      new JobApplication("Product Manager", "Ahmed Ali", "Offer Received")
+    ];
+
+    // 3. Functions to Display Data
+    function displayPostedJobs(jobs) {
+      const tableBody = document.getElementById('postedJobsBody');
+      tableBody.innerHTML = ""; // Clear old data
+      
+      jobs.forEach((job, index) => {
+        const row = `<tr>
+          <td>${job.title}</td>
+          <td>${job.company}</td>
+          <td>${job.location}</td>
+          <td>${job.description}</td>
+          <td>
+            <button class="btn btn-sm btn-primary me-1" onclick="viewApplications('${job.title}')">View Apps</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteJob(${index})">Delete</button>
+          </td>
+        </tr>`;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    function displayApplications(applications) {
+      const tableBody = document.getElementById('applicationsBody');
+      tableBody.innerHTML = ""; // Clear old data
+      
+      applications.forEach((app, index) => {
+        const statusClass = app.status === "Offer Received" ? "text-success" : 
+                           app.status === "Under Review" ? "text-warning" : "text-secondary";
+        
+        const row = `<tr>
+          <td>${app.jobTitle}</td>
+          <td>${app.candidateName}</td>
+          <td><span class="fw-bold ${statusClass}">${app.status}</span></td>
+          <td>
+            <button class="btn btn-sm btn-primary" onclick="contactCandidate(${index})">
+              ${app.status === "Offer Received" ? "Contact" : "Interview"}
+            </button>
+          </td>
+        </tr>`;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    function displayCandidateMessages() {
+      const container = document.getElementById('candidateMessages');
+      container.innerHTML = "";
+      
+      jobApplications.forEach((app, index) => {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message mb-4';
+        messageDiv.innerHTML = `
+          <p><strong>${app.candidateName} (${app.jobTitle}):</strong> Last contacted on ${app.lastContact}</p>
+          <textarea class="form-control mb-2" id="messageTo${index}" placeholder="Write a message to ${app.candidateName}..."></textarea>
+          <button class="btn btn-primary" onclick="sendMessage(${index})">Send Message</button>
+        `;
+        container.appendChild(messageDiv);
+      });
+    }
+
+    // 4. Form Handlers
+    document.getElementById('employerProfileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const companyName = document.getElementById('company-name').value;
+      const location = document.getElementById('location').value;
+      const industry = document.getElementById('industry').value;
+      const description = document.getElementById('company-description').value;
+      
+      // In a real app, you would save this to your database
+      alert('Profile updated successfully!');
+    });
+
+    document.getElementById('postJobForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const title = document.getElementById('job-title').value;
+      const salary = document.getElementById('salary').value;
+      const description = document.getElementById('job-description').value;
+      const location = document.getElementById('job-location').value;
+      const company = document.getElementById('company-name').value || "Your Company";
+      
+      const newJob = {
+        title: title,
+        company: company,
+        location: location,
+        description: description,
+        salary: salary
+      };
+      
+      postedJobs.push(newJob);
+      displayPostedJobs(postedJobs);
+      this.reset();
+      alert('Job posted successfully!');
+    });
+
+    // 5. Search Functionality
+    document.getElementById('searchJobs').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const filteredJobs = postedJobs.filter(job => 
+        job.title.toLowerCase().includes(searchTerm) || 
+        job.company.toLowerCase().includes(searchTerm)
+      );
+      displayPostedJobs(filteredJobs);
+    });
+
+    document.getElementById('searchApplications').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const filteredApps = jobApplications.filter(app => 
+        app.jobTitle.toLowerCase().includes(searchTerm) || 
+        app.candidateName.toLowerCase().includes(searchTerm)
+      );
+      displayApplications(filteredApps);
+    });
+
+    // 6. Action Functions
+    function deleteJob(index) {
+      if (confirm('Are you sure you want to delete this job posting?')) {
+        postedJobs.splice(index, 1);
+        displayPostedJobs(postedJobs);
+      }
+    }
+
+    function viewApplications(jobTitle) {
+      const appsForJob = jobApplications.filter(app => app.jobTitle === jobTitle);
+      if (appsForJob.length > 0) {
+        displayApplications(appsForJob);
+        alert(`Showing ${appsForJob.length} applications for ${jobTitle}`);
+      } else {
+        alert(`No applications found for ${jobTitle}`);
+      }
+    }
+
+    function contactCandidate(index) {
+      const app = jobApplications[index];
+      alert(`Contacting ${app.candidateName} about ${app.jobTitle} position.`);
+      // In a real app, this would open a communication channel
+    }
+
+    function sendMessage(index) {
+      const messageInput = document.getElementById(`messageTo${index}`);
+      const message = messageInput.value.trim();
+      
+      if (message) {
+        const app = jobApplications[index];
+        app.lastContact = new Date().toLocaleDateString();
+        alert(`Message sent to ${app.candidateName}: "${message}"`);
+        messageInput.value = '';
+        displayCandidateMessages();
+      } else {
+        alert('Please enter a message before sending.');
+      }
+    }
+
+    // 7. Initial Display
+    displayPostedJobs(postedJobs);
+    displayApplications(jobApplications);
+    displayCandidateMessages();
+  </script>
 </body>
 </html>
-        

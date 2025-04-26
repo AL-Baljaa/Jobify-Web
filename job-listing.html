@@ -1,107 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Job Listings | Jobify</title>
+    <title>Job Listing page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="job-listingStyleSheet.css">
-    <link rel="stylesheet" href="homeStylesheet.css">
 </head>
-<body>
-    <header>
-        <img src="jobify.png" alt="Jobify Logo" class="logo">
-        <div class="sign-buttons">
-            <a href="signin.html" class="sign-in">Sign In</a>
-            <a href="signup.html" class="sign-up">Sign Up</a>
+<body class="bg-light">
+    <header class="bg-primary text-white p-3 sticky-top">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <img src="jobify.png" alt="Jobify Logo" class="img-fluid" style="height: 2.5em;">
+            <div>
+                <a href="signin.html" class="btn btn-outline-light me-2">Sign In</a>
+                <a href="signup.html" class="btn btn-warning">Sign Up</a>
+            </div>
         </div>
-
     </header>
-    
-    <nav class="navigation">
-        <ul class="navigationList">
-            <li><a href="home.html" ><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="job-listing.html" class="active"><i class="fas fa-search"></i> Job Listing</a></li>
-            <li><a href="job-seeker.html"><i class="fas fa-users"></i> Job Seeker</a></li>
-            <li><a href="employer.html"><i class="fas fa-briefcase "></i> Employer</a></li>
-            <li><a href="trainee.html"><i class="fas fa-project-diagram"></i> Trainee and Undergraduate</a></li>
-            <li><a href="skills.html"><i class="fas fa-chalkboard"></i> Skill Development</a></li>
 
-        </ul>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="job-listing.html"><i class="fas fa-search me-1"></i> Job Listing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="job-seeker.html"><i class="fas fa-users me-1"></i> Job Seeker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="employer.html"><i class="fas fa-briefcase me-1"></i> Employer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="trainee.html"><i class="fas fa-project-diagram me-1"></i> Trainee and Undergraduate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="skills.html"><i class="fas fa-chalkboard me-1"></i> Skill Development</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <body>
-        <main class="container">
-            <section class="search">
-                <h2 class="search-title"><i class="fas fa-search"></i> Find Your Dream Job</h2>
-                <form class="search-form">
-                    <div class="forms">
-                        <label for="keywords">Job Title or Keywords</label>
-                        <input type="text" id="keywords" class="form-control" placeholder="e.g. Web Developer">
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Search Section -->
+        <section class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title text-primary"><i class="fas fa-search me-2"></i>Find Your Dream Job</h2>
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="keywords" class="form-label">Job Title or Keywords</label>
+                        <input type="text" class="form-control" id="keywords" placeholder="e.g. Web Developer">
                     </div>
-                    <div class="forms">
-                        <label for="location">Location</label>
-                        <input type="text" id="location" class="form-control" placeholder="City or Country">
+                    <div class="col-md-6">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" placeholder="City or Country">
                     </div>
-                </br>
-                    <div class="forms">
-                        <label>Salary Range</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox"><input type="checkbox" checked> $50k - $100k</label>
-                            <label class="checkbox"><input type="checkbox" > $100k - $150k</label>
-                            <label class="checkbox"><input type="checkbox"> $150k - $200k</label>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label">Salary Range</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="salary1" checked>
+                            <label class="form-check-label" for="salary1">$50k - $100k</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="salary2">
+                            <label class="form-check-label" for="salary2">$100k - $150k</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="salary3">
+                            <label class="form-check-label" for="salary3">$150k - $200k</label>
                         </div>
                     </div>
-                    <div class="forms">
-                        <label>Job Type</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox"><input type="checkbox" checked> Full-time</label>
-                            <label class="checkbox"><input type="checkbox"> Part-time</label>
-                            <label class="checkbox"><input type="checkbox"> trainee</label>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label">Job Type</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="jobType1" checked>
+                            <label class="form-check-label" for="jobType1">Full-time</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="jobType2">
+                            <label class="form-check-label" for="jobType2">Part-time</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="jobType3">
+                            <label class="form-check-label" for="jobType3">Trainee</label>
                         </div>
                     </div>
-                    <div class="forms">
-                        <label>Experience Level</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox"><input type="radio" checked> Entry Level</label>
-                            <label class="checkbox"><input type="radio">Mid Level</label>
-                            <label class="checkbox"><input type="radio"> Senior</label>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label">Experience Level</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="experience" id="exp1" checked>
+                            <label class="form-check-label" for="exp1">Entry Level</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="experience" id="exp2">
+                            <label class="form-check-label" for="exp2">Mid Level</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="experience" id="exp3">
+                            <label class="form-check-label" for="exp3">Senior</label>
                         </div>
                     </div>
-                    <div class="forms">
-                        <label>Remote Work</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox"><input type="radio" checked> Any</label>
-                            <label class="checkbox"><input type="radio">Remote Only</label>
-                            <label class="checkbox"><input type="radio"> On-site Only</label>
-                        </div>
+                    
+                    <div class="col-12 d-grid">
+                        <button type="submit" class="btn btn-primary">Search Jobs</button>
                     </div>
-                    <div class="forms">
-                        <label>Posted Within</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox"><input type="radio" checked> Any Time</label>
-                            <label class="checkbox"><input type="radio">Last 24 Hours</label>
-                            <label class="checkbox"><input type="radio">Last Week </label>
-                            <label class="checkbox"><input type="radio">Last Month </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="searchButton">Search Jobs</button>
                 </form>
-            </section>
-
-    
-            <div class="results">
-                <h2>2,200 Jobs Found</h2>
-                <div>
-                    <label for="sort">Sort by:</label>
-                    <select id="sort" class="sort-by">
-                        <option>Most Relevant</option>
-                        <option>Newest</option>
-                        <option>Highest Salary</option>
-                    </select>
-                </div>
             </div>
-    
-            <table class="jobs-table">
-                <thead>
+        </section>
+
+        <!-- Results Section -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0">2,200 Jobs Found</h2>
+            <div class="d-flex align-items-center">
+                <label for="sort" class="me-2">Sort by:</label>
+                <select id="sort" class="form-select form-select-sm" style="width: auto;">
+                    <option>Most Relevant</option>
+                    <option>Newest</option>
+                    <option>Highest Salary</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Jobs Table -->
+        <div class="table-responsive">
+            <table class="table table-hover bg-white">
+                <thead class="table-primary">
                     <tr>
                         <th>Job Title</th>
                         <th>Company</th>
@@ -114,109 +146,109 @@
                 <tbody>
                     <tr>
                         <td>
-                            <div class="job-title">Senior Frontend Developer</div>
-                            <div class="jobs">
-                                <span><i class="fas fa-clock"></i> Full-time</span>
-                                <span><i class="fas fa-calendar-alt"></i> Posted 2d ago</span>
+                            <div class="fw-bold text-primary">Senior Frontend Developer</div>
+                            <div class="d-flex gap-2 text-muted small">
+                                <span><i class="fas fa-clock text-primary"></i> Full-time</span>
+                                <span><i class="fas fa-calendar-alt text-primary"></i> Posted 2d ago</span>
                             </div>
                         </td>
                         <td>TechSolutions Inc.</td>
                         <td>
                             <div>New York, NY</div>
-                            <div class="location"><i class="fas fa-map-marker-alt"></i> Hybrid</div>
+                            <div class="text-muted small"><i class="fas fa-map-marker-alt text-primary"></i> Hybrid</div>
                         </td>
                         <td>$90k - $110k/yr</td>
                         <td>
-                            <div class="rating">
+                            <div class="text-warning">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 <i class="fas fa-star-half-alt"></i>
                             </div>
-                            <div class="review">1289 reviews</div>
+                            <div class="text-muted small">1289 reviews</div>
                         </td>
                         <td>
-                            <div class="job-actions">
-                                <button class="Apply">Apply</button>
-                                <button class="Save">Save</button>
-                            </div>                            
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-primary">Apply</button>
+                                <button class="btn btn-sm btn-outline-primary">Save</button>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div class="job-title">Software Engineer</div>
-                            <div class="jobs">
-                                <span><i class="fas fa-clock"></i> Contract</span>
-                                <span><i class="fas fa-calendar-alt"></i> Posted 1w ago</span>
+                            <div class="fw-bold text-primary">Software Engineer</div>
+                            <div class="d-flex gap-2 text-muted small">
+                                <span><i class="fas fa-clock text-primary"></i> Contract</span>
+                                <span><i class="fas fa-calendar-alt text-primary"></i> Posted 1w ago</span>
                             </div>
                         </td>
                         <td>Google</td>
                         <td>
                             <div>Mountain View, CA</div>
-                            <div class="location"><i class="fas fa-map-marker-alt"></i> Remote</div>
+                            <div class="text-muted small"><i class="fas fa-map-marker-alt text-primary"></i> Remote</div>
                         </td>
                         <td>$100k - $130k/yr</td>
                         <td>
-                            <div class="rating">
+                            <div class="text-warning">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                             </div>
-                            <div class="review">4892 reviews</div>
+                            <div class="text-muted small">4892 reviews</div>
                         </td>
                         <td>
-                            <div class="job-actions">
-                                <button class="Apply">Apply</button>
-                                <button class="Save">Save</button>
-                            </div>                           
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-primary">Apply</button>
+                                <button class="btn btn-sm btn-outline-primary">Save</button>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div class="job-title">Customer Support Rep</div>
-                            <div class="jobs">
-                                <span><i class="fas fa-clock"></i> Full-time</span>
-                                <span><i class="fas fa-calendar-alt"></i> Posted 3d ago</span>
+                            <div class="fw-bold text-primary">Customer Support Rep</div>
+                            <div class="d-flex gap-2 text-muted small">
+                                <span><i class="fas fa-clock text-primary"></i> Full-time</span>
+                                <span><i class="fas fa-calendar-alt text-primary"></i> Posted 3d ago</span>
                             </div>
                         </td>
                         <td>Amazon</td>
                         <td>
                             <div>Washington, USA</div>
-                            <div class="location"><i class="fas fa-map-marker-alt"></i> On-site</div>
+                            <div class="text-muted small"><i class="fas fa-map-marker-alt text-primary"></i> On-site</div>
                         </td>
                         <td>$40k - $50k/yr</td>
                         <td>
-                            <div class="rating">
+                            <div class="text-warning">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-                            <div class="review">2893 reviews</div>
+                            <div class="text-muted small">2893 reviews</div>
                         </td>
                         <td>
-                            <div class="job-actions">
-                                <button class="Apply">Apply</button>
-                                <button class="Save">Save</button>
-                            </div>                                           
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-primary">Apply</button>
+                                <button class="btn btn-sm btn-outline-primary">Save</button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
-        </main>
-    </body>
-    
-    
-    <footer>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3 mt-4">
         <div class="container">
-            <div class="footer-content">
-                <div class="footers">
-                    <a href="about.html">About Us</a>
-                    <a href="contact.html">Contact Us</a>
-                </div>
+            <div class="d-flex justify-content-center mb-2">
+                <a href="about.html" class="text-white mx-3 text-decoration-none">About Us</a>
+                <a href="contact.html" class="text-white mx-3 text-decoration-none">Contact Us</a>
             </div>
-            <div class="copyright">
+            <div class="text-center">
                 © 2025 Jobify. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

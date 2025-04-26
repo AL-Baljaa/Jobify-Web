@@ -1,83 +1,106 @@
 <html>
 <head>
     <title>About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="homeStylesheet.css">
 </head>
 <body>
-
-    <header>
-        <img src="jobify.png" alt="Jobify Logo" class="logo">
-        <div class="sign-buttons">
-            <a href="signin.html" class="sign-in">Sign In</a>
-            <a href="signup.html" class="sign-up">Sign Up</a>
-        </div>
-
-    </header>
-    
-    <!-- Navigation Menu -->
-    <nav class="navigation">
-        <ul class="navigationList">
-            <li><a href="home.html" ><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="job-listing.html"><i class="fas fa-search"></i> Job Listing</a></li>
-            <li><a href="job-seeker.html"><i class="fas fa-users"></i> Job Seeker</a></li>
-            <li><a href="employer.html"><i class="fas fa-briefcase "></i> Employer</a></li>
-            <li><a href="trainee.html"><i class="fas fa-project-diagram"></i> Trainee and Undergraduate</a></li>
-            <li><a href="skills.html"><i class="fas fa-chalkboard"></i> Skill Development</a></li>
-
-        </ul>
-    </nav>
-
-<main class="container">
-    <div class="profile-main">
-
-        <div class="profile-card">
-            <h3 class="section-title"> Meet the Team</h3>
-            <dl>
-                <dt><strong>Albaljaa Said Al-Rumaidhi</strong></dt>
-                <dd>Computer Science student – Frontend & UI Designer</dd>
-
-                <dt><strong>Arwa Hamed Al-Hashmi</strong></dt>
-                <dd>Geophysics student – Content Structuring & Styling</dd>
-
-        </div>
-
-        <div class="profile-card">
-            <h3 class="section-title"> Project Stats & Achievements</h3>
-            <ul>
-                <li> Built 8 responsive pages using XHTML & CSS</li>
-                <li> Implemented 3 working forms and 3 styled tables</li>
-                <li> Matched project requirements using external CSS</li>
-                <li> Hosted and version-controlled via GitHub</li>
-            </ul>
-        </div>
-
-        <div class="profile-card">
-            <h3 class="section-title">📧 Contact the Team</h3>
-            <p>Email us directly at:</p>
-            <ul>
-                <li><a href="mailto:s141811@student.squ.edu.om">Albaljaa – s141811@student.squ.edu.om</a></li>
-                <li><a href="mailto:s136734@student.squ.edu.om">Arwa – s136734@student.squ.edu.om</a></li>
-                
-            </ul>
-        </div>
-    </div>
-</main>
-
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footers">
-                <a href="about.html">About Us</a>
-                <a href="contact.html">Contact Us</a>
+    <!-- Header -->
+    <header class="bg-primary text-white p-3 sticky-top">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <img src="jobify.png" alt="Jobify Logo" class="img-fluid" style="height: 2.5em;">
+            <div>
+                <a href="signin.html" class="btn btn-outline-light me-2">Sign In</a>
+                <a href="signup.html" class="btn btn-warning">Sign Up</a>
             </div>
         </div>
-        <div class="copyright">
-            © 2025 Jobify. All rights reserved.
-        </div>
-    </div>
-</footer>
+    </header>
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="job-listing.html"><i class="fas fa-search"></i> Job Listing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="job-seeker.html"><i class="fas fa-users"></i> Job Seeker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="employer.html"><i class="fas fa-briefcase"></i> Employer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="trainee.html"><i class="fas fa-project-diagram"></i> Trainee and Undergraduate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="skills.html"><i class="fas fa-chalkboard"></i> Skill Development</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Meet the Team -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="section-title">Meet the Team</h3>
+                <dl class="row">
+                    <dt class="col-sm-3"><strong>Albaljaa Said Al-Rumaidhi</strong></dt>
+                    <dd class="col-sm-9">Computer Science student – Frontend & UI Designer</dd>
+
+                    <dt class="col-sm-3"><strong>Arwa Hamed Al-Hashmi</strong></dt>
+                    <dd class="col-sm-9">Geophysics student – Content Structuring & Styling</dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- Project Stats & Achievements -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="section-title">Project Stats & Achievements</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Built 8 responsive pages using XHTML & CSS</li>
+                    <li class="list-group-item">Implemented 3 working forms and 3 styled tables</li>
+                    <li class="list-group-item">Matched project requirements using external CSS</li>
+                    <li class="list-group-item">Hosted and version-controlled via GitHub</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="section-title">📧 Contact the Team</h3>
+                <p>Email us directly at:</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="mailto:s141811@student.squ.edu.om" class="text-decoration-none">Albaljaa – s141811@student.squ.edu.om</a></li>
+                    <li><a href="mailto:s136734@student.squ.edu.om" class="text-decoration-none">Arwa – s136734@student.squ.edu.om</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3">
+        <div class="container">
+            <div class="d-flex justify-content-center mb-2">
+                <a href="about.html" class="text-white mx-3 text-decoration-none">About Us</a>
+                <a href="contact.html" class="text-white mx-3 text-decoration-none">Contact Us</a>
+            </div>
+            <div class="text-center">
+                © 2025 Jobify. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
