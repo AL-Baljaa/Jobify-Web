@@ -1,0 +1,244 @@
+<html>
+<head>
+    <title>Questionnaire Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-light">
+    <header class="bg-primary text-white p-3 sticky-top">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <img src="jobify.png" alt="Jobify Logo" class="img-fluid" style="height: 2.5em;">
+            <div>
+                <a href="signin.html" class="btn btn-outline-light me-2">Sign In</a>
+                <a href="signup.html" class="btn btn-warning">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="home.html"><i class="fas fa-home me-1"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="job-listing.html"><i class="fas fa-search me-1"></i> Job Listing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="job-seeker.html"><i class="fas fa-users me-1"></i> Job Seeker</a></li>
+                    <li class="nav-item"><a class="nav-link" href="employer.html"><i class="fas fa-briefcase me-1"></i> Employer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="trainee.html"><i class="fas fa-project-diagram me-1"></i> Trainee and Undergraduate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="skills.html"><i class="fas fa-chalkboard me-1"></i> Skill Development</a></li>
+                    <li class="nav-item"><a class="nav-link" href="questionnaire.html"><i class="fas fa-clipboard-check"></i> Questionnaire</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <h2 class="card-title text-center mb-4">
+                            <i class="fas fa-clipboard-list me-2"></i>Customer Feedback
+                        </h2>
+                        
+                        <form id="feedbackForm" novalidate>
+                            <div class="mb-4 p-3 bg-light rounded">
+                                <h4 class="mb-3"><i class="fas fa-user me-2"></i>About You</h4>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="fullName" required>
+                                    <div class="invalid-feedback">Please enter your name (2-50 letters)</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Email <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" required>
+                                    <div class="invalid-feedback">Please enter a valid email</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Age Group</label>
+                                    <select class="form-select" id="age">
+                                        <option value="">Select your age</option>
+                                        <option value="18-24">18-24 years</option>
+                                        <option value="25-34">25-34 years</option>
+                                        <option value="35-44">35-44 years</option>
+                                        <option value="45+">45+ years</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4 p-3 bg-light rounded">
+                                <h4 class="mb-3"><i class="fas fa-comment me-2"></i>Your Feedback</h4>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Satisfaction <span class="text-danger">*</span></label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="satisfaction" id="veryHappy" required>
+                                        <label class="form-check-label" for="veryHappy">Very Happy</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="satisfaction" id="happy">
+                                        <label class="form-check-label" for="happy">Happy</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="satisfaction" id="neutral">
+                                        <label class="form-check-label" for="neutral">Neutral</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="satisfaction" id="unhappy">
+                                        <label class="form-check-label" for="unhappy">Unhappy</label>
+                                    </div>
+                                    <div class="invalid-feedback">Please select your satisfaction</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Services Used (check all that apply)</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="jobSearch">
+                                        <label class="form-check-label" for="jobSearch">Job Search</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="cvHelp">
+                                        <label class="form-check-label" for="cvHelp">CV Help</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="training">
+                                        <label class="form-check-label" for="training">Training</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Comments <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="comments" rows="3" required></textarea>
+                                    <div class="invalid-feedback">Please provide at least 20 characters</div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Submit Feedback
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-3 mt-4">
+        <div class="container">
+            <div class="text-center">
+                © 2025 Jobify. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Wait for the page to load before executing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the form element by the id
+            const form = document.getElementById('feedbackForm');
+            
+            // Add submit event listener to handle form submission
+            form.addEventListener('submit', function(event) {
+                // Prevent default form from submitting
+                event.preventDefault();
+                
+                // Check if form is valid
+                if (validateForm()) {
+                    // If the form valid show success message 
+                    alert('Thank you for your feedback!');
+                    form.reset(); // Clear the form
+                }
+            });
+            
+            // Function to validate the form fields
+            function validateForm() {
+                let isValid = true; 
+                
+                // Validate Name must be 2-50 letters, and only contain letters and space
+                const name = document.getElementById('fullName');
+                if (name.value.length < 2 || name.value.length > 50 || !/^[a-zA-Z ]+$/.test(name.value)) {
+                    // if the name is invalid add the 'is-invalid' class
+                    name.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    name.classList.remove('is-invalid');
+                }
+                
+                // Valide email must contain "@" and "."
+                const email = document.getElementById('email');
+                if (!email.value.includes('@') || !email.value.includes('.')) {
+                    // if the email is invalid add the 'is-invalid' class
+                    email.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    email.classList.remove('is-invalid');
+                }
+                
+                // Validate the radio buttons (must select one option)
+                const satisfaction = document.querySelector('input[name="satisfaction"]:checked');
+                if (!satisfaction) {
+                    // if no option is selected add the 'is-invalid' class
+                    document.querySelector('input[name="satisfaction"]').classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    document.querySelector('input[name="satisfaction"]').classList.remove('is-invalid');
+                }
+                
+                // Validate Comments field must be at least 20 characters
+                const comments = document.getElementById('comments');
+                if (comments.value.length < 20) {
+                    // if the comments are too short add the 'is-invalid' class
+                    comments.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    comments.classList.remove('is-invalid');
+                }
+                
+                // return the overall validation of the form
+                return isValid;
+            }
+            
+            // Add real-time validation when user leaves a field
+            document.getElementById('fullName').addEventListener('blur', function() {
+                const name = this; // refere to the name input field
+                //check if the name is invalid (>2 characters or <50 chatacters or contain special characters)
+                if (name.value.length < 2 || name.value.length > 50 || !/^[a-zA-Z ]+$/.test(name.value)) {
+                    name.classList.add('is-invalid');
+                } else {
+                    name.classList.remove('is-invalid');
+                }
+            });
+            
+            // Add real-time validation when the user leaves the email field
+            document.getElementById('email').addEventListener('blur', function() {
+                const email = this; // refere to the email input field
+                // check if the email is invalid (contain '@' or '.')
+                if (!email.value.includes('@') || !email.value.includes('.')) {
+                    email.classList.add('is-invalid');
+                } else {
+                    email.classList.remove('is-invalid');
+                }
+            });
+            
+            // Add real-time validation when the user leaves the comments field 
+            document.getElementById('comments').addEventListener('blur', function() {
+                const comments = this; // refere to the comments input field
+                if (comments.value.length < 20) {
+                    comments.classList.add('is-invalid');
+                } else {
+                    comments.classList.remove('is-invalid');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
