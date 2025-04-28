@@ -7,6 +7,7 @@
 
 <body class="d-flex flex-column text-white" style="background: url('unlock1.jpg') no-repeat center center/cover; background-attachment: fixed; min-height: 100vh;">
 
+    <!-- Navigation bar-->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -31,7 +32,8 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+
+    <!-- Main: have welcome message and tagline -->
     <div class="container-fluid d-flex flex-column justify-content-center align-items-center flex-grow-1 py-5">
         <div class="text-center">
             <h1 class="display-1 mb-4">Welcome to Jobify</h1>
@@ -43,8 +45,9 @@
         </div>
     </div>
 
-    <!-- Photo Gallery Carousel -->
-    <div id="photoGallery" class="carousel slide container my-5" data-bs-ride="carousel">
+
+    <!-- Carousel: for automatically rotational photos-->
+    <div id="photo" class="carousel slide container my-5" data-bs-ride="carousel">
         <div class="carousel-inner rounded-3 shadow">
             <div class="carousel-item active">
                 <img src="photo1.jpg" class="d-block w-100" alt="Photo 1">
@@ -58,6 +61,7 @@
         </div>
     </div>
 
+
     <!-- Footer -->
     <footer class="bg-dark text-white py-3 mt-auto">
         <div class="container text-center">
@@ -69,26 +73,30 @@
         </div>
     </footer>
 
-    <!-- Moving Text Banner -->
     <div class="bg-warning text-dark py-2">
         <marquee behavior="scroll" direction="left" id="movingBanner" class="fw-bold"></marquee>
     </div>
 
     <script>
+        // function to update the banner with the current date and time
         function updateBanner() {
+            // get the current date and time
             const now = new Date();
+            // Format the date and the time
             const date = now.toLocaleDateString();
             const time = now.toLocaleTimeString();
+            // update the banner with the current date and time
             document.getElementById('movingBanner').innerText = `Welcome to the Jobify website! Today is ${date}, and the time is ${time}`;
         }
         updateBanner();
+        // call the update banner every second
         setInterval(updateBanner, 1000);
 
-        // Set carousel interval
-        var myCarousel = document.querySelector('#photoGallery');
+        // Select the carousel by the id
+        var myCarousel = document.querySelector('#photo');
         var carousel = new bootstrap.Carousel(myCarousel, {
-            interval: 3000,
-            ride: 'carousel'
+            interval: 3000, // change the photo every 3 seconds
+            ride: 'carousel' // move the photo automatically 
         });
     </script>
 

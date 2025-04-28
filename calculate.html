@@ -16,6 +16,7 @@
     </div>
   </header>
 
+  <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -36,7 +37,8 @@
         </div>
     </div>
   </nav>
-    <!-- Main Content -->
+
+    <!-- Job offers comparison -->
     <main class="container my-4">
         <div class="row justify-content-center">
             <div class="col-lg-10">
@@ -120,7 +122,7 @@
                                 <h4 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Comparison Results 📊</h4>
                             </div>
                             <div class="card-body">
-                                <h5 id="winnerText" class="text-center mb-4"></h5>
+                                <h5 id="bestText" class="text-center mb-4"></h5>
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead class="table-light">
@@ -163,6 +165,7 @@
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-dark text-white py-3 mt-auto">
         <div class="container">
             <div class="d-flex justify-content-center mb-2">
@@ -175,16 +178,20 @@
         </div>
       </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Function to compare job offers
         function compareOffers() {
             // Get details for Job Offer 1
-            const title1 = document.getElementById('jobTitle1').value || "Job 1";
+            // Job title or by default "Job 1"
+            const title1 = document.getElementById('jobTitle1').value || "Job 1"; 
+            // The yearly salary converted to number 
             const salary1 = Number(document.getElementById('salary1').value);
+            // The yearly bonus converted to number 
             const bonus1 = Number(document.getElementById('bonus1').value);
+            // The yearly vacation days  
             const vacation1 = Number(document.getElementById('vacation1').value);
+            // Health insurace checkbox
             const health1 = document.getElementById('health1').checked;
 
             // Get details for Job Offer 2
@@ -195,40 +202,60 @@
             const health2 = document.getElementById('health2').checked;
 
             // Calculate totals and monthly values
-            const total1 = salary1 + bonus1;
+            // The yearly total salary for job 1
+            const total1 = salary1 + bonus1; 
+            // The yearly total salary for job 2
             const total2 = salary2 + bonus2;
+            // The monthly salary for job 1
             const monthly1 = (total1 / 12).toFixed(2);
+            // The monthly salary for job 2
             const monthly2 = (total2 / 12).toFixed(2);
 
-            // Update the results table
+            // Update the results table with the data
+            // Display the jobs title
             document.getElementById('job1Header').textContent = title1;
             document.getElementById('job2Header').textContent = title2;
+            // Display the yearly total salary
             document.getElementById('total1').textContent = formatMoney(total1);
             document.getElementById('total2').textContent = formatMoney(total2);
+            // Display the monthly total salary
             document.getElementById('monthly1').textContent = formatMoney(monthly1);
             document.getElementById('monthly2').textContent = formatMoney(monthly2);
+            // Display the vacation days
             document.getElementById('vacDays1').textContent = vacation1;
             document.getElementById('vacDays2').textContent = vacation2;
+            // Display the health insurance status
             document.getElementById('healthResult1').textContent = health1 ? "Yes ✅" : "No ❌";
             document.getElementById('healthResult2').textContent = health2 ? "Yes ✅" : "No ❌";
 
-            // Determine the winner 🏆
-            let winner = "";
+            // Determine the best job
+            // variable to store a message for the best job
+            let best = "";
+            // variable to store additional notes about the comparison
             let notes = "";
+
+            // job1 is the best if its salary is higher
             if (total1 > total2) {
-                winner = `${title1} is the better choice! 🎉`;
-                notes = `Higher total compensation by ${formatMoney(total1 - total2)}. 🤑`;
+                best = `${title1} is the best choice! 🎉`;
+                // display the difference in salary
+                notes = `Higher total salary by ${formatMoney(total1 - total2)}. 🤑`;
+            // else job2 is the best
             } else if (total2 > total1) {
-                winner = `${title2} is the better choice! 🎉`;
-                notes = `Higher total compensation by ${formatMoney(total2 - total1)}. 🤑`;
+                best = `${title2} is the best choice! 🎉`;
+                // display the difference in salary
+                notes = `Higher total salary by ${formatMoney(total2 - total1)}. 🤑`;
+            // If both jobs have the same salary
             } else {
-                winner = "Both offers are equal in pay! 🤝";
+                best = "Both offers are equal in pay! 🤝";
             }
 
             // Consider vacation days if salary difference is small
+            // check if the salary difference is less than 5000
             if (Math.abs(total1 - total2) < 5000) {
+                // display extra vacation days for job 1
                 if (vacation1 > vacation2) {
                     notes += ` | ${title1} has ${vacation1 - vacation2} more vacation days 🌴.`;
+                // display extra vacation days for job 2
                 } else if (vacation2 > vacation1) {
                     notes += ` | ${title2} has ${vacation2 - vacation1} more vacation days 🌴.`;
                 }
@@ -242,8 +269,11 @@
             }
 
             // Display results
-            document.getElementById('winnerText').textContent = winner;
+            // Display the best job by a message
+            document.getElementById('bestText').textContent = best;
+            // Display additional notes about the comparison
             document.getElementById('extraNotes').textContent = notes;
+            // show the result
             document.getElementById('results').style.display = "block";
 
             // Scroll to results section

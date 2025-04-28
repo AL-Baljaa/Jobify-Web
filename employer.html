@@ -16,6 +16,7 @@
     </div>
   </header>
 
+  <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -116,7 +117,7 @@
               </tr>
             </thead>
             <tbody id="postedJobsBody">
-              <!-- Will be populated by JavaScript -->
+              <!-- Filled by JavaScript -->
             </tbody>
           </table>
         </div>
@@ -143,7 +144,7 @@
               </tr>
             </thead>
             <tbody id="applicationsBody">
-              <!-- Will be populated by JavaScript -->
+              <!-- Filled by JavaScript -->
             </tbody>
           </table>
         </div>
@@ -155,7 +156,7 @@
       <div class="card-body">
         <h3 class="section-title">💬 Communicate with Candidates</h3>
         <div id="candidateMessages">
-          <!-- Will be populated by JavaScript -->
+          <!-- Filled by JavaScript -->
         </div>
       </div>
     </div>
@@ -175,9 +176,10 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
   
   <script>
-    // 1. Object Constructors
+    // Define an object constructor function for the employers
     function EmployerProfile(companyName, location, industry, description) {
       this.companyName = companyName;
       this.location = location;
@@ -185,15 +187,17 @@
       this.description = description;
     }
 
+    // Define an object constructor function for the job application
     function JobApplication(jobTitle, candidateName, status, lastContact) {
       this.jobTitle = jobTitle;
       this.candidateName = candidateName;
       this.status = status;
+      // last contact date with the candidate
       this.lastContact = lastContact || new Date().toLocaleDateString();
     }
 
-    // 2. Arrays Initialization
-    let postedJobs = [
+        // Initialize an array of posted jobs with thier data
+        let postedJobs = [
       {
         title: "Senior Software Engineer",
         company: "TechVision",
@@ -210,16 +214,20 @@
       }
     ];
 
+    // Initialize an array of job applications with thier data
     let jobApplications = [
       new JobApplication("Senior Software Engineer", "Sarah Liam", "Under Review"),
       new JobApplication("Product Manager", "Ahmed Ali", "Offer Received")
     ];
 
-    // 3. Functions to Display Data
+    // Functions to display posted jobs in a table
     function displayPostedJobs(jobs) {
+      //Get the table body element
       const tableBody = document.getElementById('postedJobsBody');
-      tableBody.innerHTML = ""; // Clear old data
+      // Clear old data from the table
+      tableBody.innerHTML = ""; 
       
+      // loop through eadch job
       jobs.forEach((job, index) => {
         const row = `<tr>
           <td>${job.title}</td>
@@ -231,14 +239,19 @@
             <button class="btn btn-sm btn-danger" onclick="deleteJob(${index})">Delete</button>
           </td>
         </tr>`;
+        // Append the row to the table
         tableBody.innerHTML += row;
       });
     }
 
+    // Function to display job application in a table
     function displayApplications(applications) {
+      //Get the table body element
       const tableBody = document.getElementById('applicationsBody');
-      tableBody.innerHTML = ""; // Clear old data
+      // Clear old data from the table
+      tableBody.innerHTML = ""; 
       
+      // loop through each application
       applications.forEach((app, index) => {
         const statusClass = app.status === "Offer Received" ? "text-success" : 
                            app.status === "Under Review" ? "text-warning" : "text-secondary";
@@ -253,46 +266,58 @@
             </button>
           </td>
         </tr>`;
+        // Append the row to the table
         tableBody.innerHTML += row;
       });
     }
 
+    // Function to display message for the candidates
     function displayCandidateMessages() {
+      // Get the container element
       const container = document.getElementById('candidateMessages');
+      // clear old data
       container.innerHTML = "";
       
+      // loop through each application
       jobApplications.forEach((app, index) => {
+        // create a new div for the message
         const messageDiv = document.createElement('div');
+        // add styling classes
         messageDiv.className = 'message mb-4';
         messageDiv.innerHTML = `
           <p><strong>${app.candidateName} (${app.jobTitle}):</strong> Last contacted on ${app.lastContact}</p>
           <textarea class="form-control mb-2" id="messageTo${index}" placeholder="Write a message to ${app.candidateName}..."></textarea>
           <button class="btn btn-primary" onclick="sendMessage(${index})">Send Message</button>
         `;
+        // Append the div to the container
         container.appendChild(messageDiv);
       });
     }
 
-    // 4. Form Handlers
+    // Event Listener for the employer profile form submission
     document.getElementById('employerProfileForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      // Get the input values (company name, industry, description)
       const companyName = document.getElementById('company-name').value;
       const location = document.getElementById('location').value;
       const industry = document.getElementById('industry').value;
       const description = document.getElementById('company-description').value;
       
-      // In a real app, you would save this to your database
+      // message for the user
       alert('Profile updated successfully!');
     });
 
+    // Event Listener for the post job form submission
     document.getElementById('postJobForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      // get the input values (job title, salary, description, location)
       const title = document.getElementById('job-title').value;
       const salary = document.getElementById('salary').value;
       const description = document.getElementById('job-description').value;
       const location = document.getElementById('job-location').value;
       const company = document.getElementById('company-name').value || "Your Company";
       
+      // save the input value in a variable(newjob)
       const newJob = {
         title: title,
         company: company,
@@ -301,71 +326,97 @@
         salary: salary
       };
       
+      // Add the new job to the posted jobs
       postedJobs.push(newJob);
+      // update the table
       displayPostedJobs(postedJobs);
+      // clear the data
       this.reset();
+      // message for the user
       alert('Job posted successfully!');
     });
 
-    // 5. Search Functionality
+    // Search for a posted job using Event Listener
     document.getElementById('searchJobs').addEventListener('input', function(e) {
+      // Get the search text and convert to lowercase
       const searchTerm = e.target.value.toLowerCase();
       const filteredJobs = postedJobs.filter(job => 
+        // Fillter by company name and job title
         job.title.toLowerCase().includes(searchTerm) || 
         job.company.toLowerCase().includes(searchTerm)
       );
+      // update the table to display filltered results
       displayPostedJobs(filteredJobs);
     });
 
+    // Search for a job application using Event Listener
     document.getElementById('searchApplications').addEventListener('input', function(e) {
+      // Get the search text and convert to lowercase
       const searchTerm = e.target.value.toLowerCase();
       const filteredApps = jobApplications.filter(app => 
+        // Fillter by candidate name and job title
         app.jobTitle.toLowerCase().includes(searchTerm) || 
         app.candidateName.toLowerCase().includes(searchTerm)
       );
+      // update the table to display filltered results
       displayApplications(filteredApps);
     });
 
-    // 6. Action Functions
+    // Function to delete a posted job
     function deleteJob(index) {
       if (confirm('Are you sure you want to delete this job posting?')) {
+        // remove the job at the specified index
         postedJobs.splice(index, 1);
+        // update the table
         displayPostedJobs(postedJobs);
       }
     }
 
+    // Function to view applications for specific job
     function viewApplications(jobTitle) {
       const appsForJob = jobApplications.filter(app => app.jobTitle === jobTitle);
+      // check if there are any applications
       if (appsForJob.length > 0) {
+        // Display the filtered applications
         displayApplications(appsForJob);
+        // message to notify the user
         alert(`Showing ${appsForJob.length} applications for ${jobTitle}`);
       } else {
         alert(`No applications found for ${jobTitle}`);
       }
     }
 
+    // Function to initiate with a candidate
     function contactCandidate(index) {
+      //Get the application at the specified index
       const app = jobApplications[index];
       alert(`Contacting ${app.candidateName} about ${app.jobTitle} position.`);
-      // In a real app, this would open a communication channel
     }
 
+    // Function to send a message to a candidate
     function sendMessage(index) {
       const messageInput = document.getElementById(`messageTo${index}`);
       const message = messageInput.value.trim();
       
+      // validate that the message isn't empty
       if (message) {
+        // Get the application at the specified index
         const app = jobApplications[index];
+        // Update the last contact date
         app.lastContact = new Date().toLocaleDateString();
+        // Message to the user
         alert(`Message sent to ${app.candidateName}: "${message}"`);
+        // clear the message
         messageInput.value = '';
+        // update the message display
         displayCandidateMessages();
       } else {
+        // if the message is empty
         alert('Please enter a message before sending.');
       }
     }
 
-    // 7. Initial Display
+    // Display the initial data when the page load
     displayPostedJobs(postedJobs);
     displayApplications(jobApplications);
     displayCandidateMessages();

@@ -6,7 +6,6 @@
 
 </head>
 <body class="bg-light">
-    <!-- Header -->
     <header class="bg-primary text-white p-3 sticky-top">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <img src="jobify.png" alt="Jobify Logo" class="img-fluid" style="height: 2.5em;">
@@ -17,6 +16,7 @@
         </div>
     </header>
 
+    <!-- Navigation bar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -38,7 +38,9 @@
         </div>
     </nav>
 
+
     <main class="container my-4">
+        <!-- Section for jobseekers to update their profile-->
         <div class="card section-card mb-4">
             <div class="card-body">
                 <h3 class="card-title"><i class="fas fa-user-edit me-2"></i>Update Your Profile</h3>
@@ -68,7 +70,8 @@
             </div>
         </div>
 
-        <!-- Search Bar for Seekers -->
+
+        <!-- Search bar to find job seekers by their name or job title -->
         <div class="card section-card mb-4">
             <div class="card-body">
                 <h5 class="card-title"><i class="fas fa-search me-2"></i>Search Job Seekers</h5>
@@ -76,7 +79,8 @@
             </div>
         </div>
 
-        <!-- Job Seekers Table -->
+
+        <!-- table for registered job seekers with details-->
         <div class="card section-card mb-4">
             <div class="card-body">
                 <h3 class="card-title"><i class="fas fa-users me-2"></i>Job Seekers</h3>
@@ -165,7 +169,7 @@
 
     
     <script>
-        // 1. Object Constructors
+        // Define an object constructor function for the jobseeker
         function JobSeeker(name, title, skills, about) {
             this.name = name;
             this.title = title;
@@ -173,6 +177,7 @@
             this.about = about;
         }
 
+        // Define an object constructor function for the job
         function Job(title, company, location, description) {
             this.title = title;
             this.company = company;
@@ -180,12 +185,13 @@
             this.description = description;
         }
 
-        // 2. Arrays Initialization
+        // Initialize an array of jobseeker objects to store thier data
         let jobSeekers = [
             new JobSeeker("Alice Johnson", "Web Developer", "HTML, CSS, JS", "Passionate front-end developer."),
             new JobSeeker("Bob Smith", "Data Analyst", "Python, SQL", "Loves numbers and insights.")
         ];
 
+        // Initialize an array of job objects to store the saved jobs
         let savedJobs = [
             new Job("Software Engineer", "Emirates Tech Innovations", "Dubai, UAE", 
                    "Designs and develops enterprise-level software applications. Works with cloud technologies and collaborates with product managers and designers to deliver high-performance solutions."),
@@ -193,11 +199,14 @@
                    "Develops secure and scalable server-side systems using Node.js and Python. Optimizes databases and supports integration with third-party services.")
         ];
 
-        // 3. Functions to Display Data
+        // Functions to display job seekers data in a table
         function displaySeekers(seekers) {
+            // Get the table body element
             const tableBody = document.getElementById('jobSeekersBody');
-            tableBody.innerHTML = ""; // Clear old data
-            seekers.forEach((seeker, index) => {
+            // Clear old data from the table
+            tableBody.innerHTML = ""; 
+            //Loop through each job seeker object
+            seekers.forEach((seeker, index) => { 
                 const row = `<tr>
                     <td>${seeker.name}</td>
                     <td>${seeker.title}</td>
@@ -205,13 +214,18 @@
                     <td>${seeker.about}</td>
                     <td><button class="btn btn-danger btn-sm" onclick="deleteSeeker(${index})">Delete</button></td>
                 </tr>`;
+                // Append the row to the table
                 tableBody.innerHTML += row;
             });
         }
 
+        // function to display jobs data in a table
         function displaySavedJobs() {
+            // Get the table body element
             const tableBody = document.getElementById('jobsBody');
-            tableBody.innerHTML = ""; // Clear old data
+            // Clear old data from the table
+            tableBody.innerHTML = ""; 
+            // Loop through each saved job object
             savedJobs.forEach((job, index) => {
                 const row = `<tr>
                     <td>${job.title}</td>
@@ -223,39 +237,50 @@
                         <button class="btn btn-sm btn-danger" onclick="removeSavedJob(${index})">Remove</button>
                     </td>
                 </tr>`;
+                //Append the row to the table
                 tableBody.innerHTML += row;
             });
         }
 
-        // 4. Add New Seeker
+        // Add new job seeker using Event Listener
         document.getElementById('addSeekerForm').addEventListener('submit', function(e) {
+            // prevent
             e.preventDefault();
+            // Get the input value of each object(name, title, skills, about)
             const name = document.getElementById('name').value.trim();
             const title = document.getElementById('title').value.trim();
             const skills = document.getElementById('skills').value.trim();
             const about = document.getElementById('about').value.trim();
 
+            //validate that all fields are filled
             if (name && title && skills && about) {
+                //create a new job seeker object
                 const newSeeker = new JobSeeker(name, title, skills, about);
+                // Add the new job seeker to the array
                 jobSeekers.push(newSeeker);
+                //update the table
                 displaySeekers(jobSeekers);
-                this.reset(); // Clear form
+                // Clear form
+                this.reset();
             }
         });
 
-        // 5. Delete Seeker
+        // Function to delete a job seeker from the list
         function deleteSeeker(index) {
+            // remove the job seeker at the current index
             jobSeekers.splice(index, 1);
+            //update the table
             displaySeekers(jobSeekers);
         }
 
-        // 6. Remove Saved Job
+        // Function to remove a saved job from the list
         function removeSavedJob(index) {
             savedJobs.splice(index, 1);
+            // update the table
             displaySavedJobs();
         }
 
-        // 7. Save Job
+        // Function to save a job if it doesn't exist
         function saveJob(job) {
             // Check if job already exists
             const exists = savedJobs.some(savedJob => 
@@ -263,16 +288,19 @@
                 savedJob.company === job.company
             );
             
+            // if the job doesn't exist
             if (!exists) {
                 savedJobs.push(job);
+                // update the table to display the new job
                 displaySavedJobs();
+                // messages to the user 
                 alert('Job saved successfully!');
             } else {
                 alert('This job is already in your saved list.');
             }
         }
 
-        // 8. Save Recommended Job
+        // Function to save a recommended job 
         function saveRecommendedJob() {
             const newJob = new Job(
                 "Systems Engineer",
@@ -280,20 +308,23 @@
                 "Dubai, UAE",
                 "Working on cutting-edge systems with a focus on cloud technologies and AI integration."
             );
+            // call the saveJob function to save the job
             saveJob(newJob);
         }
 
-        // 9. Search Job Seekers
+        // Search for a jobseeker using Event Listener
         document.getElementById('searchSeekers').addEventListener('input', function(e) {
+            // Get the search text and convert to lowercase
             const searchText = e.target.value.toLowerCase();
             const filteredSeekers = jobSeekers.filter(seeker => 
+                // Fillter by name and job title
                 seeker.name.toLowerCase().includes(searchText) || 
                 seeker.title.toLowerCase().includes(searchText)
             );
             displaySeekers(filteredSeekers);
         });
 
-        // 10. Initial Display
+        // display the initial data(job seekers data, saved jobs) when the page loads
         displaySeekers(jobSeekers);
         displaySavedJobs();
     </script>
