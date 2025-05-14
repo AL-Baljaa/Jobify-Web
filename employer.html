@@ -179,6 +179,187 @@
 
   
   <script>
+    
+    // Shared functions
+    function showError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        // Clear existing errors for this field
+        const existingError = field.parentNode.querySelector('.error-message');
+        if (existingError) existingError.remove();
+        
+        if (message) {
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error-message text-danger mt-1 small';
+            errorElement.textContent = message;
+            field.parentNode.appendChild(errorElement);
+            field.classList.add('is-invalid');
+        } else {
+            field.classList.remove('is-invalid');
+        }
+    }
+
+    function clearAllErrors() {
+        document.querySelectorAll('.error-message').forEach(el => el.remove());
+        document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+    }
+
+    // Employer Profile Validation
+    function validateCompanyName() {
+        const value = document.getElementById('company-name').value.trim();
+        if (!value) return showError('company-name', 'Company Name is required');
+        if (value.length < 2) return showError('company-name', 'Company Name must be at least 2 characters');
+        showError('company-name', '');
+        return true;
+    }
+
+    function validateLocation() {
+        const value = document.getElementById('location').value.trim();
+        if (!value) return showError('location', 'Location is required');
+        showError('location', '');
+        return true;
+    }
+
+    function validateIndustry() {
+        const value = document.getElementById('industry').value.trim();
+        if (!value) return showError('industry', 'Industry is required');
+        showError('industry', '');
+        return true;
+    }
+
+    function validateCompanyDescription() {
+        const value = document.getElementById('company-description').value.trim();
+        if (!value) return showError('company-description', 'Company Description is required');
+        if (value.length < 20) return showError('company-description', 'Description should be at least 20 characters');
+        if (value.length > 1000) return showError('company-description', 'Description should not exceed 1000 characters');
+        showError('company-description', '');
+        return true;
+    }
+
+    function validateLogo() {
+        const logoInput = document.getElementById('logo');
+        if (logoInput.files.length === 0) return showError('logo', 'Company Logo is required');
+        
+        const file = logoInput.files[0];
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        const maxSize = 2 * 1024 * 1024; // 2MB
+        
+        if (!allowedTypes.includes(file.type)) return showError('logo', 'Only image files are allowed (JPEG, PNG, GIF)');
+        if (file.size > maxSize) return showError('logo', 'File size should not exceed 2MB');
+        
+        showError('logo', '');
+        return true;
+    }
+
+    // Post Job Validation
+    function validateJobTitle() {
+        const value = document.getElementById('job-title').value.trim();
+        if (!value) return showError('job-title', 'Job Title is required');
+        if (value.length < 3) return showError('job-title', 'Job Title must be at least 3 characters');
+        showError('job-title', '');
+        return true;
+    }
+
+    function validateSalary() {
+        const value = document.getElementById('salary').value.trim();
+        const salaryRegex = /^(\$|€|£|OMR|AED|)\s*\d{1,3}(,\d{3})*(\.\d{2})?(\s*-\s*(\$|€|£|OMR|AED|)\s*\d{1,3}(,\d{3})*(\.\d{2})?)?$/;
+        if (!value) return showError('salary', 'Salary is required');
+        if (!salaryRegex.test(value)) return showError('salary', 'Please enter a valid salary range (e.g., $1,000 - $2,000 or OMR 500 - OMR 800)');
+        showError('salary', '');
+        return true;
+    }
+
+    function validateJobDescription() {
+        const value = document.getElementById('job-description').value.trim();
+        if (!value) return showError('job-description', 'Job Description is required');
+        if (value.length < 50) return showError('job-description', 'Description should be at least 50 characters');
+        if (value.length > 2000) return showError('job-description', 'Description should not exceed 2000 characters');
+        showError('job-description', '');
+        return true;
+    }
+
+    function validateJobLocation() {
+        const value = document.getElementById('job-location').value.trim();
+        if (!value) return showError('job-location', 'Location is required');
+        showError('job-location', '');
+        return true;
+    }
+
+    // Combined validation functions
+    function validateEmployerProfileForm() {
+        clearAllErrors();
+        const isValid = validateCompanyName() &&
+                       validateLocation() &&
+                       validateIndustry() &&
+                       validateCompanyDescription() &&
+                       validateLogo();
+        return isValid;
+    }
+
+    function validatePostJobForm() {
+        clearAllErrors();
+        const isValid = validateJobTitle() &&
+                       validateSalary() &&
+                       validateJobDescription() &&
+                       validateJobLocation();
+        return isValid;
+    }
+
+    // Form submission handlers
+    document.getElementById('employerProfileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (validateEmployerProfileForm()) {
+            const companyName = document.getElementById('company-name').value;
+            const location = document.getElementById('location').value;
+            const industry = document.getElementById('industry').value;
+            const description = document.getElementById('company-description').value;
+            
+            alert('Profile updated successfully!');
+            // You would typically submit the form or save the data here
+        }
+    });
+    
+    document.getElementById('postJobForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (validatePostJobForm()) {
+            const title = document.getElementById('job-title').value;
+            const salary = document.getElementById('salary').value;
+            const description = document.getElementById('job-description').value;
+            const location = document.getElementById('job-location').value;
+            const company = document.getElementById('company-name').value || "Your Company";
+            
+            const newJob = {
+                title: title,
+                company: company,
+                location: location,
+                description: description,
+                salary: salary
+            };
+            
+            postedJobs.push(newJob);
+            displayPostedJobs(postedJobs);
+            this.reset();
+            alert('Job posted successfully!');
+        }
+    });
+
+    // Set up event listeners for real-time validation
+    // Employer Profile Form
+    document.getElementById('company-name').addEventListener('blur', validateCompanyName);
+    document.getElementById('location').addEventListener('blur', validateLocation);
+    document.getElementById('industry').addEventListener('blur', validateIndustry);
+    document.getElementById('company-description').addEventListener('blur', validateCompanyDescription);
+    document.getElementById('logo').addEventListener('change', validateLogo);
+
+    // Post Job Form
+    document.getElementById('job-title').addEventListener('blur', validateJobTitle);
+    document.getElementById('salary').addEventListener('blur', validateSalary);
+    document.getElementById('job-description').addEventListener('blur', validateJobDescription);
+    document.getElementById('job-location').addEventListener('blur', validateJobLocation);
+
+
+
     // Define an object constructor function for the employers
     function EmployerProfile(companyName, location, industry, description) {
       this.companyName = companyName;

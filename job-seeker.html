@@ -169,6 +169,147 @@
 
     
     <script>
+        
+        // showError function: Displays error message below the respective field
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            // Remove any existing error message to avoid duplicates
+           const existingError = field.closest('.form-group')?.querySelector('.error-message');
+          if (existingError) {
+            existingError.remove();
+          }
+
+            // Create error element
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.style.color = 'red';
+            errorDiv.style.fontSize = '0.9em';
+            errorDiv.textContent = message;
+
+            // Append error message after the input field
+            field.parentNode.insertBefore(errorDiv, field.nextSibling);
+        }
+
+        // Validate Full Name
+        function validateName() {
+            const name = document.getElementById('name').value.trim();
+            const nameRegex = /^[a-zA-Z\s]{3,}$/;
+            if (!name) {
+                showError('name', 'Full Name is required');
+                return false;
+            } else if (!nameRegex.test(name)) {
+                showError('name', 'Name must be at least 3 characters and contain only letters');
+                return false;
+            }
+            return true;
+        }
+
+        // Validate Job Title
+        function validateTitle() {
+            const title = document.getElementById('title').value.trim();
+            if (!title) {
+                showError('title', 'Job Title is required');
+                return false;
+            } else if (title.length < 2) {
+                showError('title', 'Job Title must be at least 2 characters');
+                return false;
+            }
+            return true;
+        }
+
+        // Validate Skills
+        function validateSkills() {
+            const skills = document.getElementById('skills').value.trim();
+            if (!skills) {
+                showError('skills', 'Skills are required');
+                return false;
+            } else if (skills.length < 5) {
+                showError('skills', 'Please provide more details about your skills');
+                return false;
+            }
+            return true;
+        }
+
+        // Validate About Section
+        function validateAbout() {
+            const about = document.getElementById('about').value.trim();
+            if (!about) {
+                showError('about', 'About section is required');
+                return false;
+            } else if (about.length < 20) {
+                showError('about', 'About section should be at least 20 characters');
+                return false;
+            } else if (about.length > 500) {
+                showError('about', 'About section should not exceed 500 characters');
+                return false;
+            }
+            return true;
+        }
+
+        // Validate CV File
+        function validateCV() {
+            const cvInput = document.getElementById('cv');
+            if (cvInput.files.length === 0) {
+                showError('cv', 'CV file is required');
+                return false;
+            } else {
+                const file = cvInput.files[0];
+                const allowedTypes = ['application/pdf', 'application/msword', '.docx'];
+                const maxSize = 5 * 1024 * 1024; // 5MB
+
+                if (!allowedTypes.includes(file.type)) {
+                    showError('cv', 'Only PDF and Word documents are allowed');
+                    return false;
+                } else if (file.size > maxSize) {
+                    showError('cv', 'File size should not exceed 5MB');
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Main Validation Function for Form Submission
+        function validateAddSeekerForm() {
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.remove());
+ 
+            // Validate all fields
+            const isNameValid = validateName();
+            const isTitleValid = validateTitle();
+            const isSkillsValid = validateSkills();
+            const isAboutValid = validateAbout();
+            const isCVValid = validateCV();
+
+            // Return true only if all validations pass
+            return isNameValid && isTitleValid && isSkillsValid && isAboutValid && isCVValid;
+        }
+
+        // Real-time validation on field exit (blur) or change
+        document.getElementById('name').addEventListener('blur', validateName);
+        document.getElementById('title').addEventListener('blur', validateTitle);
+        document.getElementById('skills').addEventListener('blur', validateSkills);
+        document.getElementById('about').addEventListener('blur', validateAbout);
+        document.getElementById('cv').addEventListener('change', validateCV);
+
+        // Form submission (full validation)
+        document.getElementById('addSeekerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (validateAddSeekerForm()) {
+                const name = document.getElementById('name').value.trim();
+                const title = document.getElementById('title').value.trim();
+                const skills = document.getElementById('skills').value.trim();
+                const about = document.getElementById('about').value.trim();
+
+                const newSeeker = new JobSeeker(name, title, skills, about);
+                jobSeekers.push(newSeeker);
+                displaySeekers(jobSeekers);
+                this.reset();
+                alert('Profile updated successfully!');
+            }
+        });
+
+
         // Define an object constructor function for the jobseeker
         function JobSeeker(name, title, skills, about) {
             this.name = name;
