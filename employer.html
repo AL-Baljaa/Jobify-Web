@@ -44,26 +44,26 @@
     <div class="card mb-4 rounded">
       <div class="card-body">
         <h3 class="section-title">Update Your Profile</h3>
-        <form id="employerProfileForm" class="forms">
+        <form id="employerProfileForm" method="POST" action="save_profile.php" enctype="multipart/form-data" class="forms">
           <div class="mb-3">
             <label for="company-name">🏢 Company Name</label>
-            <input type="text" class="form-control" id="company-name" placeholder="Enter company name" required>
+            <input type="text" class="form-control" id="company-name" name="company-name" placeholder="Enter company name" required>
           </div>
           <div class="mb-3">
             <label for="location">📍 Location</label>
-            <input type="text" class="form-control" id="location" placeholder="e.g., Muscat, Dubai">
+            <input type="text" class="form-control" id="location" name="location" placeholder="e.g., Muscat, Dubai">
           </div>
           <div class="mb-3">
             <label for="industry">🏭 Industry</label>
-            <input type="text" class="form-control" id="industry" placeholder="e.g., Tech, Healthcare">
+            <input type="text" class="form-control" id="industry" name="industry" placeholder="e.g., Tech, Healthcare">
           </div>
           <div class="mb-3">
             <label for="company-description">📝 Company Description</label>
-            <textarea class="form-control" id="company-description" placeholder="Describe your company..."></textarea>
+            <textarea class="form-control" id="company-description" name="company-description" placeholder="Describe your company..."></textarea>
           </div>
           <div class="mb-3">
             <label for="logo">📄 Upload Company Logo</label>
-            <input class="form-control" type="file" id="logo">
+            <input class="form-control" type="file" id="logo" name="logo">
           </div>
           <button type="submit" class="btn btn-primary">💾 Save Profile</button>
         </form>
@@ -74,22 +74,22 @@
     <div class="card mb-4 rounded">
       <div class="card-body">
         <h3 class="section-title">Post a Job</h3>
-        <form id="postJobForm" class="forms">
+        <form id="postJobForm" method="POST" action="post_job.php" class="forms">
           <div class="mb-3">
             <label for="job-title">💼 Job Title</label>
-            <input type="text" class="form-control" id="job-title" placeholder="e.g., Software Engineer" required>
+            <input type="text" class="form-control" id="job-title" name="job-title" placeholder="e.g., Software Engineer" required>
           </div>
           <div class="mb-3">
             <label for="salary">💵 Salary</label>
-            <input type="text" class="form-control" id="salary" placeholder="e.g., $1,000 - $10,000">
+            <input type="text" class="form-control" id="salary" name="salary" placeholder="e.g., $1,000 - $10,000">
           </div>
           <div class="mb-3">
             <label for="job-description">📄 Job Description</label>
-            <textarea class="form-control" id="job-description" placeholder="Describe the work and the roles..."></textarea>
+            <textarea class="form-control" id="job-description" name="job-description" placeholder="Describe the work and the roles..."></textarea>
           </div>
           <div class="mb-3">
             <label for="job-location">📍 Location</label>
-            <input type="text" class="form-control" id="job-location" placeholder="e.g., Muscat, Dubai, ...">
+            <input type="text" class="form-control" id="job-location" name="job-location" placeholder="e.g., Muscat, Dubai, ...">
           </div>
           <button type="submit" class="btn btn-primary">📤 Post Job</button>
         </form>
@@ -306,44 +306,11 @@
 
     // Form submission handlers
     document.getElementById('employerProfileForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        if (validateEmployerProfileForm()) {
-            const companyName = document.getElementById('company-name').value;
-            const location = document.getElementById('location').value;
-            const industry = document.getElementById('industry').value;
-            const description = document.getElementById('company-description').value;
-            
-            alert('Profile updated successfully!');
-            // You would typically submit the form or save the data here
-        }
+      if (!validateEmployerProfileForm()) {
+        e.preventDefault(); // Prevent submission if invalid
+      }
     });
     
-    document.getElementById('postJobForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        if (validatePostJobForm()) {
-            const title = document.getElementById('job-title').value;
-            const salary = document.getElementById('salary').value;
-            const description = document.getElementById('job-description').value;
-            const location = document.getElementById('job-location').value;
-            const company = document.getElementById('company-name').value || "Your Company";
-            
-            const newJob = {
-                title: title,
-                company: company,
-                location: location,
-                description: description,
-                salary: salary
-            };
-            
-            postedJobs.push(newJob);
-            displayPostedJobs(postedJobs);
-            this.reset();
-            alert('Job posted successfully!');
-        }
-    });
-
     // Set up event listeners for real-time validation
     // Employer Profile Form
     document.getElementById('company-name').addEventListener('blur', validateCompanyName);

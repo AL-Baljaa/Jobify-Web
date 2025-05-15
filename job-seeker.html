@@ -44,26 +44,26 @@
         <div class="card section-card mb-4">
             <div class="card-body">
                 <h3 class="card-title"><i class="fas fa-user-edit me-2"></i>Update Your Profile</h3>
-                <form id="addSeekerForm">
+                <form id="addSeekerForm" action="job-seeker.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="name" class="form-label"><i class="fas fa-user me-1"></i> Full Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label"><i class="fas fa-briefcase text-warning me-1"></i> Job Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="e.g., Software Engineer">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="e.g., Software Engineer">
                     </div>
                     <div class="mb-3">
                         <label for="skills" class="form-label"><i class="fas fa-brain text-danger me-1"></i> Skills</label>
-                        <input type="text" class="form-control" id="skills" placeholder="e.g., Web Development, Research">
+                        <input type="text" class="form-control" id="skills" name="skills" placeholder="e.g., Web Development, Research">
                     </div>
                     <div class="mb-3">
                         <label for="about" class="form-label"><i class="fas fa-edit text-info me-1"></i> About You</label>
-                        <textarea class="form-control" id="about" rows="3" placeholder="Write a short bio..."></textarea>
+                        <textarea class="form-control" id="about" name="about" rows="3" placeholder="Write a short bio..."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="cv" class="form-label"><i class="fas fa-file-alt me-1"></i> Upload Your CV</label>
-                        <input class="form-control" type="file" id="cv">
+                        <input class="form-control" type="file" id="cv" name="cv">
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i> Save Profile</button>
                 </form>
@@ -293,22 +293,16 @@
 
         // Form submission (full validation)
         document.getElementById('addSeekerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.remove());
 
-            if (validateAddSeekerForm()) {
-                const name = document.getElementById('name').value.trim();
-                const title = document.getElementById('title').value.trim();
-                const skills = document.getElementById('skills').value.trim();
-                const about = document.getElementById('about').value.trim();
+            // Run validation
+            const isValid = validateAddSeekerForm();
 
-                const newSeeker = new JobSeeker(name, title, skills, about);
-                jobSeekers.push(newSeeker);
-                displaySeekers(jobSeekers);
-                this.reset();
-                alert('Profile updated successfully!');
+            if (!isValid) {
+                e.preventDefault(); // Stop form submission if invalid
             }
         });
-
 
         // Define an object constructor function for the jobseeker
         function JobSeeker(name, title, skills, about) {
