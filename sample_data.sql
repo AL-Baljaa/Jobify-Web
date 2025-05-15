@@ -2,11 +2,11 @@ USE job_portal;
 -- Job Seeker page samples
 -- Sample job seekers
 INSERT INTO job_seekers (full_name, job_title, skills, about) VALUES
-('Alice Johnson', 'Web Developer', 'HTML, CSS, JavaScript, React', 'Passionate front-end developer with 3 years of experience...'),
-('Bob Smith', 'Data Analyst', 'Python, SQL, Tableau, Excel', 'Data enthusiast with strong analytical skills...'),
-('Carol Williams', 'UX Designer', 'Figma, Adobe XD, User Research', 'Creating intuitive user experiences...'),
-('David Brown', 'DevOps Engineer', 'AWS, Docker, Kubernetes, CI/CD', 'Helping teams deliver software faster...'),
-('Eve Davis', 'Product Manager', 'Agile, Scrum, Product Strategy', 'Bridging the gap between business needs...');
+('Amina Al-Farouqi', 'Web Developer', 'HTML, CSS, JavaScript, React', 'Passionate front-end developer with 3 years of experience...'),
+('william Smith', 'Data Analyst', 'Python, SQL, Tableau, Excel', 'Data enthusiast with strong analytical skills...'),
+('Omar al-mansori', 'UX Designer', 'Figma, Adobe XD, User Research', 'Creating intuitive user experiences...'),
+('layla hassan', 'DevOps Engineer', 'AWS, Docker, Kubernetes, CI/CD', 'Helping teams deliver software faster...'),
+('Qaboos Al-Rashdi', 'Product Manager', 'Agile, Scrum, Product Strategy', 'Bridging the gap between business needs...');
 
 -- Sample saved jobs
 INSERT INTO saved_jobs (seeker_id, job_title, company, location, description) VALUES
